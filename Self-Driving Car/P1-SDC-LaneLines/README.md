@@ -1,4 +1,4 @@
-# **Finding Lane Lines on the Road** 
+# **P1 - Finding Lane Lines on the Road** 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 Overview
@@ -38,69 +38,52 @@ Reflection describes the current pipeline, identifies its potential shortcomings
 ## My Pipelines
 
 My pipeline consisted of 8 steps.
-* Grayscale
+* **Grayscale.** This will return an image with only one color channel.
 
 ![alt text][pipe1]
 
-* Gaussian Blur
+* **Gaussian Blur.** Applies a Gaussian Noise Kernel.
 
 ![alt text][pipe2]
 
-* Color Selection
+* **Color Selection.** Applies the Color Selection.
 
 ![alt text][pipe3]
 
-* Region of Interest
+* **Region of Interest.** Applies an Image Masking. Only keeps the region of the image defined by the polygon formed from vertices. The rest of the image is set to black.
 
 ![alt text][pipe4]
 
-* Canny Edge
+* **Canny Edge.** Applies the Canny Edges Transform.
 
 ![alt text][pipe5]
 
-* Hough Transform
+* **Hough Transform.** Applies the Hough Transform.
 
 ![alt text][pipe6]
 
-* Draw Lines
+* **Draw Lines.** Drawing Solid Lines based on slope from Hough Transform result.
 
 ![alt text][pipe7]
 
-* Weighted Image
+* **Weighted Image.** Combine Lines and Real Image.
 
 ![alt text][pipe8]
 
 ## Potential Shortcomings
 
-### 1. Identify potential shortcomings with your current pipeline
-
-One potential shortcoming would be what would happen when ... 
-
-Another shortcoming could be ...
+There are several potential shortcomings.
+* Potential shortcoming would happen when lanes meet sharp-turn. Need to fixing the sloope algorithm.
+* Another shortcoming would happen if the line not solid, and the color not consistent.
+* Another shortcoming would happen if the line covered with shadow on one side. For example if left line not covered, and right line covered, then only left line that detected by this algorithm.
+* And one more shortcoming would happen if the resolution of Images/Videos different (not standardized). Because the lines that created, using fixed coordinates. 
 
 
 ## Possible Improvements
 
-### 1. Suggest possible improvements to your pipeline
-
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
-
-### 2. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-### 3. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
+There are several possible improvements.
+* Possible improvement would be to creating a historical data of slope. So we can predict next slope depend on before data. And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
+* Another possible improvement would be to create dynamic algorithm for drawing a lines. Possibly by using shape of the image, and then proportionally using that for drawing a lines.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
