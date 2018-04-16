@@ -1,4 +1,4 @@
-# **Finding Lane Lines on the Road** 
+# **P1 - Finding Lane Lines on the Road** 
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
 
 Overview
@@ -38,49 +38,41 @@ Reflection describes the current pipeline, identifies its potential shortcomings
 ## My Pipelines
 
 My pipeline consisted of 8 steps.
-* Grayscale
-This will return an image with only one color channel.
+* **Grayscale.** This will return an image with only one color channel.
 
 ![alt text][pipe1]
 
-* Gaussian Blur
-Applies a Gaussian Noise Kernel.
+* **Gaussian Blur.** Applies a Gaussian Noise Kernel.
 
 ![alt text][pipe2]
 
-* Color Selection
-Applies the Color Selection.
+* **Color Selection.** Applies the Color Selection.
 
 ![alt text][pipe3]
 
-* Region of Interest
-Applies an Image Masking. Only keeps the region of the image defined by the polygon formed from vertices. The rest of the image is set to black.
+* **Region of Interest.** Applies an Image Masking. Only keeps the region of the image defined by the polygon formed from vertices. The rest of the image is set to black.
 
 ![alt text][pipe4]
 
-* Canny Edge
-Applies the Canny Edges Transform.
+* **Canny Edge.** Applies the Canny Edges Transform.
 
 ![alt text][pipe5]
 
-* Hough Transform
-Applies the Hough Transform.
+* **Hough Transform.** Applies the Hough Transform.
 
 ![alt text][pipe6]
 
-* Draw Lines
-Drawing Solid Lines based on slope from Hough Transform result.
+* **Draw Lines.** Drawing Solid Lines based on slope from Hough Transform result.
 
 ![alt text][pipe7]
 
-* Weighted Image
-Combine Lines and Real Image.
+* **Weighted Image.** Combine Lines and Real Image.
 
 ![alt text][pipe8]
 
 ## Potential Shortcomings
 
-There is several potential shortcomings.
+There are several potential shortcomings.
 * Potential shortcoming would happen when lanes meet sharp-turn. Need to fixing the sloope algorithm.
 * Another shortcoming would happen if the line not solid, and the color not consistent.
 * Another shortcoming would happen if the line covered with shadow on one side. For example if left line not covered, and right line covered, then only left line that detected by this algorithm.
@@ -89,7 +81,9 @@ There is several potential shortcomings.
 
 ## Possible Improvements
 
-Possible improvement would be to create a historical data of slope. So we can predict next slope depend on before data. And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
+There are several possible improvements.
+* Possible improvement would be to creating a historical data of slope. So we can predict next slope depend on before data. And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
+* Another possible improvement would be to create dynamic algorithm for drawing a lines. Possibly by using shape of the image, and then proportionally using that for drawing a lines.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
