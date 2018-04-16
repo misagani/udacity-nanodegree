@@ -40,67 +40,66 @@ Reflection describes the current pipeline, identifies its potential shortcomings
 My pipeline consisted of 8 steps.
 * Grayscale
 
+This will return an image with only one color channel.
+
 ![alt text][pipe1]
 
 * Gaussian Blur
+
+Applies a Gaussian Noise Kernel.
 
 ![alt text][pipe2]
 
 * Color Selection
 
+Applies the Color Selection.
+
 ![alt text][pipe3]
 
 * Region of Interest
+
+Applies an Image Masking. Only keeps the region of the image defined by the polygon formed from vertices. The rest of the image is set to black.
 
 ![alt text][pipe4]
 
 * Canny Edge
 
+Applies the Canny Edges Transform.
+
 ![alt text][pipe5]
 
 * Hough Transform
+
+Applies the Hough Transform.
 
 ![alt text][pipe6]
 
 * Draw Lines
 
+Drawing Solid Lines based on slope from Hough Transform result.
+
 ![alt text][pipe7]
 
 * Weighted Image
+
+Combine Lines and Real Image.
 
 ![alt text][pipe8]
 
 ## Potential Shortcomings
 
-### 1. Identify potential shortcomings with your current pipeline
+Potential shortcoming would happen when lanes meet sharp-turn. Need to fixing the sloope algorithm. 
 
-One potential shortcoming would be what would happen when ... 
+Another shortcoming would happen if the line not solid, and the color not consistent.
 
-Another shortcoming could be ...
+And one more shortcoming would happen if the line covered with shadow on one side. For example if left line not covered, and right line covered, then only left line that detected by this algorithm. 
 
 
 ## Possible Improvements
 
-### 1. Suggest possible improvements to your pipeline
+Possible improvement would be to create a historical data of slope. So we can predict next slope depend on before data.
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
-
-### 2. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-### 3. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
-
-First, I converted the images to grayscale, then I .... 
-
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
-
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
-
-![alt text][image1]
+And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
