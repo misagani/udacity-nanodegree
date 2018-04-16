@@ -39,67 +39,57 @@ Reflection describes the current pipeline, identifies its potential shortcomings
 
 My pipeline consisted of 8 steps.
 * Grayscale
-
 This will return an image with only one color channel.
 
 ![alt text][pipe1]
 
 * Gaussian Blur
-
 Applies a Gaussian Noise Kernel.
 
 ![alt text][pipe2]
 
 * Color Selection
-
 Applies the Color Selection.
 
 ![alt text][pipe3]
 
 * Region of Interest
-
 Applies an Image Masking. Only keeps the region of the image defined by the polygon formed from vertices. The rest of the image is set to black.
 
 ![alt text][pipe4]
 
 * Canny Edge
-
 Applies the Canny Edges Transform.
 
 ![alt text][pipe5]
 
 * Hough Transform
-
 Applies the Hough Transform.
 
 ![alt text][pipe6]
 
 * Draw Lines
-
 Drawing Solid Lines based on slope from Hough Transform result.
 
 ![alt text][pipe7]
 
 * Weighted Image
-
 Combine Lines and Real Image.
 
 ![alt text][pipe8]
 
 ## Potential Shortcomings
 
-Potential shortcoming would happen when lanes meet sharp-turn. Need to fixing the sloope algorithm. 
-
-Another shortcoming would happen if the line not solid, and the color not consistent.
-
-And one more shortcoming would happen if the line covered with shadow on one side. For example if left line not covered, and right line covered, then only left line that detected by this algorithm. 
+There is several potential shortcomings.
+* Potential shortcoming would happen when lanes meet sharp-turn. Need to fixing the sloope algorithm.
+* Another shortcoming would happen if the line not solid, and the color not consistent.
+* Another shortcoming would happen if the line covered with shadow on one side. For example if left line not covered, and right line covered, then only left line that detected by this algorithm.
+* And one more shortcoming would happen if the resolution of Images/Videos different (not standardized). Because the lines that created, using fixed coordinates. 
 
 
 ## Possible Improvements
 
-Possible improvement would be to create a historical data of slope. So we can predict next slope depend on before data.
-
-And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
+Possible improvement would be to create a historical data of slope. So we can predict next slope depend on before data. And then we can using statistics for searching the slope, not simple just like this, only counting the average value.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
