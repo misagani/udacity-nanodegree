@@ -47,9 +47,11 @@ My pipeline consisted of 8 steps.
 ![alt text][pipe2]
 
 * Color Selection
+
 ![alt text][pipe3]
 
 * Region of Interest
+
 ![alt text][pipe4]
 
 * Canny Edge
@@ -99,3 +101,6 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
 ![alt text][image1]
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
